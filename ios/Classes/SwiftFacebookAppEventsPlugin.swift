@@ -115,17 +115,7 @@ public class SwiftFacebookAppEventsPlugin: NSObject, FlutterPlugin {
     }
 
     private func handleSetUserData(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-        let arguments = call.arguments as? [String: Any] ?? [String: Any]()
-        AppEvents.setUserData(arguments["email"] as? String, forType: AppEvents.UserDataType.email)
-        AppEvents.setUserData(arguments["firstName"] as? String, forType: AppEvents.UserDataType.firstName)
-        AppEvents.setUserData(arguments["lastName"] as? String, forType: AppEvents.UserDataType.lastName)
-        AppEvents.setUserData(arguments["phone"] as? String, forType: AppEvents.UserDataType.phone)
-        AppEvents.setUserData(arguments["dateOfBirth"] as? String, forType: AppEvents.UserDataType.dateOfBirth)
-        AppEvents.setUserData(arguments["gender"] as? String, forType: AppEvents.UserDataType.gender)
-        AppEvents.setUserData(arguments["city"] as? String, forType: AppEvents.UserDataType.city)
-        AppEvents.setUserData(arguments["state"] as? String, forType: AppEvents.UserDataType.state)
-        AppEvents.setUserData(arguments["zip"] as? String, forType: AppEvents.UserDataType.zip)
-        AppEvents.setUserData(arguments["country"] as? String, forType: AppEvents.UserDataType.country)
+        
 
         result(nil)
     }
@@ -140,13 +130,7 @@ public class SwiftFacebookAppEventsPlugin: NSObject, FlutterPlugin {
         let arguments = call.arguments as? [String: Any] ?? [String: Any]()
         let parameters =  arguments["parameters"] as! [String: Any]
 
-        AppEvents.updateUserProperties( parameters, handler: { (connection, response, error) in
-            if error != nil {
-                result(nil)
-            } else {
-                result(response)
-            }
-        })
+       
     }
 
     private func handleSetAutoLogAppEventsEnabled(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -184,6 +168,6 @@ public class SwiftFacebookAppEventsPlugin: NSObject, FlutterPlugin {
     }
 
     public func initializeSDK() {
-        ApplicationDelegate.initializeSDK(nil)
+//        ApplicationDelegate.initializeSDK(nil)
     }
 }
